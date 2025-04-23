@@ -14,18 +14,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обработка кнопки скачивания
     const downloadBtn = document.getElementById('downloadBtn');
     
-    downloadBtn.addEventListener('click', function() {
-        // Добавляем wave эффект
-        this.classList.add('wave-effect');
-        
-        // В реальном проекте здесь будет код для генерации PDF
-        // Для примера просто создаем ссылку на несуществующий PDF
-        const link = document.createElement('a');
-        link.href = 'resume.pdf';
-        link.download = 'Мое_резюме.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    // Добавьте эту библиотеку в head
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+downloadBtn.addEventListener('click', function() {
+    const element = document.querySelector('.resume-container');
+    const opt = {
+        margin: 10,
+        filename: 'Мое_резюме.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    
+    // Генерация PDF
+    html2pdf().from(element).set(opt).save();
+});
         
         // Имитация задержки генерации PDF
         setTimeout(() => {
