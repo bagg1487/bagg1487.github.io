@@ -8,50 +8,54 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     :root {
-      --primary-color: #646cff;
-      --secondary-color: #535bf2;
-      --text-color: #213547;
-      --bg-color: #ffffff;
-      --card-bg: #f9f9f9;
-      --shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      --border-radius: 6px;
+      --primary-color: #2E3440;
+      --secondary-color: #5E81AC;
+      --accent-color: #D08770;
+      --text-color: #2E3440;
+      --bg-color: #ECEFF4;
+      --card-bg: #E5E9F0;
+      --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      --border-radius: 8px;
+      --section-spacing: 15px;
     }
 
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Inter', 'Arial', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      font-size: 12px;
-      line-height: 1.4;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .a4-container {
       width: 210mm;
       min-height: 297mm;
       margin: 0 auto;
-      padding: 15mm;
+      padding: 20mm;
       box-sizing: border-box;
       background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .profile-header {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
-      gap: 15px;
+      margin-bottom: 30px;
+      gap: 25px;
     }
 
     .profile-photo {
-      width: 80px;
-      height: 80px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       overflow: hidden;
-      border: 2px solid var(--primary-color);
+      border: 4px solid var(--secondary-color);
       position: relative;
       cursor: pointer;
       transition: transform 0.3s;
+      box-shadow: var(--shadow);
     }
 
     .profile-photo:hover {
@@ -88,33 +92,35 @@
     }
 
     .profile-info h1 {
-      font-size: 1.5em;
+      font-size: 28px;
       margin: 0;
       color: var(--primary-color);
+      font-weight: 700;
     }
 
     .profile-info p {
-      font-size: 1em;
-      margin: 3px 0 0;
-      color: var(--text-color);
+      font-size: 18px;
+      margin: 8px 0 0;
+      color: var(--secondary-color);
+      font-weight: 500;
     }
 
     .profile-grid {
       display: grid;
       grid-template-rows: auto auto auto;
-      gap: 10px;
+      gap: var(--section-spacing);
     }
 
     .profile-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: var(--section-spacing);
     }
 
     .profile-card {
       background-color: var(--card-bg);
       border-radius: var(--border-radius);
-      padding: 10px;
+      padding: 20px;
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
@@ -122,27 +128,27 @@
 
     .profile-card h2 {
       color: var(--primary-color);
-      margin: 0 0 8px 0;
-      font-size: 1.1em;
+      margin: 0 0 15px 0;
+      font-size: 18px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 3px;
+      gap: 8px;
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 8px;
     }
 
     /* Опыт работы */
     .experience-vertical {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
     }
 
     .exp-item {
-      background-color: rgba(100, 108, 255, 0.05);
+      background-color: rgba(94, 129, 172, 0.1);
       border-radius: var(--border-radius);
-      padding: 8px;
-      border-left: 2px solid var(--primary-color);
+      padding: 15px;
+      border-left: 4px solid var(--secondary-color);
       position: relative;
       overflow: hidden;
     }
@@ -151,32 +157,35 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 3px;
+      margin-bottom: 5px;
     }
 
     .exp-header h3 {
       margin: 0;
-      font-size: 0.95em;
+      font-size: 16px;
       color: var(--primary-color);
+      font-weight: 600;
     }
 
     .exp-date {
-      font-size: 0.75em;
+      font-size: 14px;
       opacity: 0.8;
-      background-color: rgba(100, 108, 255, 0.1);
-      padding: 1px 4px;
-      border-radius: 3px;
+      background-color: rgba(94, 129, 172, 0.2);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 500;
     }
 
     .exp-company {
-      font-weight: 500;
-      margin-bottom: 5px;
-      font-size: 0.85em;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--secondary-color);
     }
 
     .exp-desc {
-      font-size: 0.8em;
-      line-height: 1.4;
+      font-size: 14px;
+      line-height: 1.6;
       opacity: 0.9;
     }
 
@@ -184,14 +193,14 @@
     .education-vertical {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
     }
 
     .edu-item {
-      background-color: rgba(100, 108, 255, 0.05);
+      background-color: rgba(94, 129, 172, 0.1);
       border-radius: var(--border-radius);
-      padding: 8px;
-      border-left: 2px solid var(--primary-color);
+      padding: 15px;
+      border-left: 4px solid var(--secondary-color);
       position: relative;
       overflow: hidden;
     }
@@ -200,32 +209,35 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 3px;
+      margin-bottom: 5px;
     }
 
     .edu-header h3 {
       margin: 0;
-      font-size: 0.95em;
+      font-size: 16px;
       color: var(--primary-color);
+      font-weight: 600;
     }
 
     .edu-date {
-      font-size: 0.75em;
+      font-size: 14px;
       opacity: 0.8;
-      background-color: rgba(100, 108, 255, 0.1);
-      padding: 1px 4px;
-      border-radius: 3px;
+      background-color: rgba(94, 129, 172, 0.2);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 500;
     }
 
     .edu-place {
-      font-weight: 500;
-      margin-bottom: 5px;
-      font-size: 0.85em;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--secondary-color);
     }
 
     .edu-desc {
-      font-size: 0.8em;
-      line-height: 1.4;
+      font-size: 14px;
+      line-height: 1.6;
       opacity: 0.9;
     }
 
@@ -233,90 +245,100 @@
     .tags-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
     }
 
     .tag {
-      background-color: var(--primary-color);
+      background-color: var(--secondary-color);
       color: white;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 0.75em;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 14px;
       position: relative;
       overflow: hidden;
+      font-weight: 500;
     }
 
     .languages-container {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
     }
 
     .language-item {
-      font-size: 0.85em;
+      font-size: 15px;
       position: relative;
       overflow: hidden;
+      font-weight: 500;
     }
 
     .flag {
-      margin-right: 4px;
+      margin-right: 6px;
     }
 
     .level {
-      color: var(--secondary-color);
-      font-size: 0.75em;
-      margin-left: 3px;
+      color: var(--accent-color);
+      font-size: 13px;
+      margin-left: 5px;
+      font-weight: 500;
     }
 
     /* Контакты */
     .contacts-container {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
     }
 
     .contact-item {
-      font-size: 0.85em;
+      font-size: 15px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       position: relative;
       overflow: hidden;
+      font-weight: 500;
     }
 
     /* Кнопки */
     .controls {
       display: flex;
       justify-content: center;
-      margin-top: 15px;
+      margin-top: 25px;
     }
 
     #downloadBtn, .add-btn {
-      border-radius: 4px;
+      border-radius: 6px;
       border: none;
-      padding: 6px 12px;
-      font-size: 0.85em;
-      background-color: var(--primary-color);
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: var(--secondary-color);
       color: white;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
       position: relative;
       overflow: hidden;
+      font-weight: 600;
+      transition: all 0.3s;
     }
 
     #downloadBtn:hover, .add-btn:hover {
-      background-color: var(--secondary-color);
+      background-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .add-btn {
-      background-color: #4CAF50;
-      margin-top: 8px;
+      background-color: var(--accent-color);
+      margin-top: 15px;
+      width: 100%;
+      justify-content: center;
     }
 
     .add-btn:hover {
-      background-color: #45a049;
+      background-color: #BF616A;
     }
 
     /* Эффект волны */
@@ -331,14 +353,15 @@
     }
 
     [contenteditable="true"] {
-      padding: 1px 3px;
-      border-radius: 2px;
+      padding: 2px 5px;
+      border-radius: 4px;
       min-height: 1em;
+      transition: background-color 0.3s;
     }
 
     [contenteditable="true"]:focus {
       outline: none;
-      background-color: rgba(100, 108, 255, 0.1);
+      background-color: rgba(208, 135, 112, 0.1);
     }
 
     /* Анимации */
@@ -366,6 +389,17 @@
       .controls, .add-btn, .upload-overlay {
         display: none;
       }
+    }
+
+    /* Дополнительные стили из Figma */
+    .profile-card h2 i {
+      color: var(--accent-color);
+    }
+
+    .contact-item i {
+      color: var(--accent-color);
+      width: 20px;
+      text-align: center;
     }
   </style>
 </head>
@@ -402,7 +436,7 @@
         </div>
 
         <div class="profile-card">
-          <h2><i class="fas fa-code"></i> Инструменты</h2>
+          <h2><i class="fas fa-code"></i> Навыки</h2>
           <div class="tags-container" id="skillsContainer">
             <span class="tag" contenteditable="true">HTML/CSS</span>
             <span class="tag" contenteditable="true">JavaScript</span>
